@@ -1,0 +1,26 @@
+import camion.*
+import cosas.*
+
+test "Peso par" {
+	arena.peso(14)
+	paqueteLadrillos.cantidad(1)
+	camion.cargar(arena)
+	camion.cargar(paqueteLadrillos)
+	assert.equals(true, camion.todoPesoPar())
+}
+
+test "Peso par (error intencional)" {
+	arena.peso(13)
+	paqueteLadrillos.cantidad(1)
+	camion.cargar(arena)
+	camion.cargar(paqueteLadrillos)
+	assert.equals(true, camion.todoPesoPar())
+}
+
+test "Peso impar" {
+	arena.peso(13)
+	paqueteLadrillos.cantidad(1)
+	camion.cargar(arena)
+	camion.cargar(paqueteLadrillos)
+	assert.equals(false, camion.todoPesoPar())
+}

@@ -3,15 +3,18 @@ import cosas.*
 object camion {
 	// Peso máximo en kilos
 	const pesoMaximo = 2500
+	
+	// Peso base
 	const tara = 1000
 	
 	var contenido = []
 	
 	method cargar(cosa) {contenido.add(cosa) }
+	
 	method descargar(cosa) { contenido.remove(cosa) }
 	
 	// Si el peso de cada uno de los objetos cargados es un número par
-	method todoPesoPar() = !contenido.all({cosa => cosa.peso().odd()})
+	method todoPesoPar() = contenido.all({cosa => cosa.peso().odd() == true})
 	
 	// Indica si hay alguno de los objetos cargados que tiene exactamente el peso indicado
 	method hayAlgunoQuePesa(peso) = contenido.any({cosa => cosa.peso() == peso})

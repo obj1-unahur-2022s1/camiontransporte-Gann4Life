@@ -15,7 +15,7 @@ import cosas.*
  	bumblebee.transformadoEnAuto(false)
  	arena.peso(150)
  	bateriaAntiarea.conMisiles(true)
- 	paqueteLadrillos.cantidad(80)
+ 	paqueteLadrillos.cantidad	(80)
  	embalajeSeguridad.contenido(paqueteLadrillos)
  	
  	camion.cargar(bumblebee)
