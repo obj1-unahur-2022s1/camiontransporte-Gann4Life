@@ -6,7 +6,7 @@ test "Peso par" {
 	paqueteLadrillos.cantidad(1)
 	camion.cargar(arena)
 	camion.cargar(paqueteLadrillos)
-	assert.equals(true, camion.todoPesoPar())
+	assert.that(camion.todoPesoPar())
 }
 
 test "Peso par (error intencional)" {
@@ -14,7 +14,7 @@ test "Peso par (error intencional)" {
 	paqueteLadrillos.cantidad(1)
 	camion.cargar(arena)
 	camion.cargar(paqueteLadrillos)
-	assert.equals(true, camion.todoPesoPar())
+	assert.that(camion.todoPesoPar())
 }
 
 test "Peso impar" {
@@ -22,5 +22,5 @@ test "Peso impar" {
 	paqueteLadrillos.cantidad(1)
 	camion.cargar(arena)
 	camion.cargar(paqueteLadrillos)
-	assert.equals(false, camion.todoPesoPar())
+	assert.notThat(camion.todoPesoPar())
 }
