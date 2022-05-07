@@ -1,3 +1,28 @@
 import camion.*
 import cosas.*
 
+/*
+ * Por otro lado, armar un test del camión, cargado con lo siguiente: 
+ * bumblebee como robot, 
+ * la arena a granel con 150 kilos, 
+ * la batería antiaérea con los misiles puestos, 
+ * y el embalaje de seguridad poniéndole como contenido el paquete de ladrillos con 80 ladrillos.
+ * Para cada método, calcular qué resultado tiene que dar, y hacer el test correspondiente.
+ * Esto va en camionTest.wtest.
+ */
+ 
+ test "Múltiples cargas" {
+ 	bumblebee.transformadoEnAuto(false)
+ 	arena.peso(150)
+ 	bateriaAntiarea.conMisiles(true)
+ 	paqueteLadrillos.cantidad(80)
+ 	embalajeSeguridad.contenido(paqueteLadrillos)
+ 	
+ 	camion.cargar(bumblebee)
+ 	camion.cargar(arena)
+ 	camion.cargar(bateriaAntiarea)
+ 	camion.cargar(embalajeSeguridad)
+ 	
+ 	//assert.equals(1000 + 800 + 150 + 300 + (80*2), camion.pesoTotal())
+ 	assert.equals(1000 + bumblebee.peso() + arena.peso() + bateriaAntiarea.peso() + embalajeSeguridad.peso(), camion.pesoTotal())
+ }

@@ -1,2 +1,71 @@
 import camion.*
 import cosas.*
+
+/*
+ * Hay que hacer un pequeño test para cada una de las siguientes cosas: 
+ * paquete de ladrillos, 
+ * batería antiaérea, 
+ * contenedor portuario 
+ * y embalaje de seguridad. 
+ * Al embalaje ponerle adentro los residuos radioactivos con 30 kg de peso. 
+ * Al contenedor, dos o tres cosas a elección. 
+ * Todo esto en un archivo cosasTest.wtest.
+ */
+
+test "Paquete de ladrillos" {
+	var cantidadATestear = 50
+	paqueteLadrillos.cantidad(cantidadATestear)
+	assert.equals(cantidadATestear*2, paqueteLadrillos.peso())
+}
+
+test "Batería antiaérea sin misiles: Peso" {
+	assert.that(bateriaAntiarea.peso()==200)
+}
+
+test "Batería antiaérea con misiles: Peso" {
+	bateriaAntiarea.conMisiles(true)
+	assert.that(bateriaAntiarea.peso()==300)
+}
+
+test "Batería antiaérea sin misiles: Peligrosidad" {
+	assert.that(bateriaAntiarea.peligrosidad()==0)
+}
+
+test "Batería antiaérea con misiles: Peligrosidad" {
+	bateriaAntiarea.conMisiles(true)
+	assert.that(bateriaAntiarea.peligrosidad()==100)
+}
+
+
+test "Contenedor: Peso" {
+	paqueteLadrillos.cantidad(5)
+	bateriaAntiarea.conMisiles(true)
+	contenedor.add(paqueteLadrillos)
+	contenedor.add(bateriaAntiarea)
+	assert.equals(100+paqueteLadrillos.peso()+bateriaAntiarea.peso(), contenedor.peso())
+}
+
+test "Contenedor: Peligrosidad" {
+	paqueteLadrillos.cantidad(5)
+	bateriaAntiarea.conMisiles(true)
+	contenedor.add(paqueteLadrillos)
+	contenedor.add(bateriaAntiarea)
+	assert.equals(bateriaAntiarea.peligrosidad(), contenedor.peligrosidad())
+}
+
+
+
+
+test "Embalaje de seguridad: Peso" {
+	residuosRadioactivos.peso(30)
+	embalajeSeguridad.contenido(residuosRadioactivos)
+	assert.equals(residuosRadioactivos.peso(), embalajeSeguridad.peso())
+}
+
+test "Embalaje de seguridad: Peligrosidad" {
+	residuosRadioactivos.peso(30)
+	embalajeSeguridad.contenido(residuosRadioactivos)
+	assert.equals(residuosRadioactivos.peligrosidad()/2, embalajeSeguridad.peligrosidad())
+}
+
+
