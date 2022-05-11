@@ -32,7 +32,7 @@ object camion {
 	method objetosQueSuperanPeligrosidad(nivel) = contenido.filter({cosa => cosa.peligrosidad() > nivel})
 	
 	// Devuelve una colección con los objetos cargados que son más peligrosos que la cosa indicada
-	method objetosMasPeligrososQue(cosa) = contenido.filter({elemento => elemento.peso() > cosa.peso()})
+	method objetosMasPeligrososQue(cosa) = self.objetosQueSuperanPeligrosidad(cosa.peligrosidad())
 	
 	// Puede circular si no está excedido de peso, y además, ninguno de los objetos cargados supera el nivel máximo de peligrosidad indicado
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad) = !self.excedidoDePeso() && contenido.any({cosa => cosa.peligrosidad() > nivelMaximoPeligrosidad})
