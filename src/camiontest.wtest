@@ -26,3 +26,14 @@ import cosas.*
  	//assert.equals(1000 + 800 + 150 + 300 + (80*2), camion.pesoTotal())
  	assert.equals(1000 + bumblebee.peso() + arena.peso() + bateriaAntiarea.peso() + embalajeSeguridad.peso(), camion.pesoTotal())
  }
+ 
+ test "Tiene algo de peso entre 50 y 150" {
+ 	arena.peso(25)
+ 	paqueteLadrillos.cantidad(35)
+ 	
+ 	camion.cargar(arena)
+ 	camion.cargar(paqueteLadrillos)
+ 	
+ 	assert.that(camion.tieneAlgoQuePeseEntre(50, 150))
+ }
+ 

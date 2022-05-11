@@ -38,7 +38,7 @@ object camion {
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad) = !self.excedidoDePeso() && contenido.any({cosa => cosa.peligrosidad() > nivelMaximoPeligrosidad})
 	
 	// Indica si el peso de alguna de las cosas que tiene el camión está en ese intervalo
-	method tieneAlgoQuePeseEntre(min, max) = contenido.find({cosa => cosa.peso().between(min, max)}).size() > 0
+	method tieneAlgoQuePeseEntre(min, max) = contenido.any{cosa => cosa.peso().between(min, max)}
 
 	// la cosa más pesada que tenga el camión. Ojo que lo que se pide es la cosa y no su peso.
 	 method cosaMasPesada() = contenido.max({cosa => cosa.peso()})
