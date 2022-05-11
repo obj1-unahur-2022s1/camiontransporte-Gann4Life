@@ -14,7 +14,7 @@ object camion {
 	method descargar(cosa) { contenido.remove(cosa) }
 	
 	// Si el peso de cada uno de los objetos cargados es un número par
-	method todoPesoPar() = contenido.all({cosa => cosa.peso().odd() == false})
+	method todoPesoPar() = contenido.all({cosa => cosa.peso().even()})
 	
 	// Indica si hay alguno de los objetos cargados que tiene exactamente el peso indicado
 	method hayAlgunoQuePesa(peso) = contenido.any({cosa => cosa.peso() == peso})
